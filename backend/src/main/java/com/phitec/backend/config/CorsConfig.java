@@ -1,3 +1,7 @@
+/*
+    CORS é um mecanismo de segurança dos navegadores que impede que uma aplicação 
+    frontend (em uma origem) acesse um backend (em outra origem), sem permissão explícita.
+ */
 package com.phitec.backend.config;
 
 import org.springframework.context.annotation.Bean;
