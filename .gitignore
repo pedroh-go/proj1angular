@@ -1,0 +1,30 @@
+# VS Code
+.vscode/
+
+# Node.js (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/npm-debug.log
+frontend/package-lock.json
+
+# Java / Maven (backend)
+backend/target/
+backend/.mvn/
+backend/mvnw.cmd
+backend/mvnw
+backend/.idea/
+backend/*.iml
+backend/logs/
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# Docker
+docker-compose.override.yml
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Docker
+.env
