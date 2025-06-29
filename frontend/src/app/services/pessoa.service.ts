@@ -11,11 +11,23 @@ export class PessoaService {
 
   constructor(private http: HttpClient) { }
 
+  //cadastrar
   cadastrar(pessoa: Pessoa): Observable<Pessoa>{
     return this.http.post<Pessoa>(this.apiUrl, pessoa);
   }
 
+  //listar
   listar():Observable<Pessoa[]>{
     return this.http.get<Pessoa[]>(this.apiUrl);
+  }
+
+  //atualizar
+  atualizar(pessoa: Pessoa):Observable<Pessoa>{
+    return this.http.put<Pessoa>(`${this.apiUrl}/${pessoa.id}`, pessoa);
+  }
+
+  //excluir
+  excluir(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

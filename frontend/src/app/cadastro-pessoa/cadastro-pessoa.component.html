@@ -12,7 +12,9 @@
             <input type="email" id="email" class="form-control" [(ngModel)]="pessoa.email" name="email" required>
         </div>
 
-        <button type="submit" class="submit-btn" [disabled]="!cadastroForm.valid">Salvar</button>
+        <button type="submit" class="submit-btn" [disabled]="!cadastroForm.valid">
+            {{ editando ? 'Atualizar' : 'Salvar'}}
+        </button>
     </form>
 
     <p class="form-message">{{ mensagem }}</p>
@@ -21,6 +23,8 @@
     <ul>
         <li *ngFor="let p of pessoas">
             {{ p.nome }} - {{ p.email }}
+            <button (click)="editar(p)">Editar</button>
+            <button (click)="excluir(p)">Excluir</button>
         </li>
     </ul>
 </div>
