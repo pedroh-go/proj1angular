@@ -8,7 +8,7 @@ import {Pessoa } from '../models/pessoa';
   selector: 'app-cadastro-pessoa',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './cadastro-pessoa.component.html',
+  templateUrl: './cadastro-pessoa.component.html',//Isso garante o vinculo com a página html e quando o botão submite for acionado, apontará para cá
   styleUrl: './cadastro-pessoa.component.css'
 })
 export class CadastroPessoaComponent {
