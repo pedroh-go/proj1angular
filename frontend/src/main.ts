@@ -1,7 +1,12 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { CadastroPessoaComponent } from './app/cadastro-pessoa/cadastro-pessoa.component';
 import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { appRoutes } from './app/app.routes';
+import { AppComponent } from './app/app.component'; // novo componente principal
 
-bootstrapApplication(CadastroPessoaComponent, {
-  providers: [provideHttpClient()]
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(),
+    provideRouter(appRoutes)
+  ]
 });

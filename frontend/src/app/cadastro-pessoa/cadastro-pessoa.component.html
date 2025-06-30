@@ -18,13 +18,4 @@
     </form>
 
     <p class="form-message">{{ mensagem }}</p>
-
-    <h2>Lista de Pessoas</h2>
-    <ul>
-        <li *ngFor="let p of pessoas">
-            {{ p.nome }} - {{ p.email }}
-            <button (click)="editar(p)">Editar</button>
-            <button (click)="excluir(p)">Excluir</button>
-        </li>
-    </ul>
 </div>
