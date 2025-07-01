@@ -14,7 +14,7 @@ public class CorsDevConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins(
                     "http://localhost:4200",
-                    "https://4200-pedrohgo-proj1angular-abc123.ws-us120.gitpod.io"
+                    "https://4200-pedrohgo-proj1angular-7xyo5c7jdnv.ws-us120.gitpod.io/"
                 )
                 .allowedMethods("*")
                 .allowedHeaders("*")

@@ -42,8 +42,11 @@ export class ListarPessoasComponent implements OnInit {
     }
   }
 
-  editar(pessoa: Pessoa): void {
-    // Redireciona para /cadastro passando o id como parâmetro (iremos tratar depois)
-    this.router.navigate(['/cadastro'], { state: { pessoa } });
+ editar(id: number | undefined): void {
+    if (id !== undefined) {
+      this.router.navigate(['/cadastro', id]);
+    } else {
+      console.error('ID da pessoa está indefinido');
+    }
   }
 }
