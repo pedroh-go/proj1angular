@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PessoaService } from '../services/pessoa.service';
 import { Pessoa } from '../models/pessoa';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-pessoa',
@@ -17,10 +18,19 @@ export class CadastroPessoaComponent {
   mensagem = '';
   editando = false;// flag para alternar entre cadastro e edição:
 
-  constructor(private pessoaService: PessoaService) { }
+  constructor(
+      private pessoaService: PessoaService,
+      private route: ActivatedRoute
+    ){ }
 
-  ngOnInit() {
-    this.carregarPessoas();
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.pessoaService.buscarPorId(+id).subscribe(pessoa => {
+        this.pessoa = pessoa;
+        this.editando = true;
+      });
+    }
   }
 
   salvar() {

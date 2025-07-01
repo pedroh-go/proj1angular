@@ -4,6 +4,7 @@ import { ListarPessoasComponent } from './listar-pessoas.component';
 
 export const appRoutes: Routes = [
   { path: 'cadastro', component: CadastroPessoaComponent },
+  { path: 'cadastro/:id', component: CadastroPessoaComponent },
   { path: 'listar', component: ListarPessoasComponent },
   { path: '', redirectTo: 'cadastro', pathMatch: 'full' }, // rota padrão
 ];

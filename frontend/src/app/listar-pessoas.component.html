@@ -1,11 +1,15 @@
 <h2>Lista de Pessoas</h2>
 
-<ul>
-    <li *ngFor="let p of pessoas">
-        {{ p.nome }} - {{ p.email }}
-        <button (click)="editar(p)">Editar</button>
-        <button (click)="excluir(p)">Excluir</button>
-    </li>
+<ul *ngIf="pessoas.length > 0; else nenhumaPessoa">
+  <li *ngFor="let p of pessoas">
+    {{ p.nome }} - {{ p.email }}
+    <button (click)="editar(p.id)">Editar</button>
+    <button (click)="excluir(p)">Excluir</button>
+  </li>
 </ul>
+
+<ng-template #nenhumaPessoa>
+  <p>Nenhuma pessoa cadastrada ainda.</p>
+</ng-template>
 
 <p *ngIf="mensagem">{{ mensagem }}</p>

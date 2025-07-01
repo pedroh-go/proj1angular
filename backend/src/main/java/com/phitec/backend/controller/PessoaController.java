@@ -39,6 +39,16 @@ public class PessoaController {
         return pessoaRepository.findAll();
     }
 
+    /**
+     * Buscar pessoa por ID (usado na edição)
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<Pessoa> buscarPorId(@PathVariable Long id) {
+        return pessoaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     //alterar/atualizar
     @PutMapping("/{id}")
     public ResponseEntity<Pessoa>atualizar(@PathVariable Long id, @RequestBody Pessoa pessoaAtualizada){
