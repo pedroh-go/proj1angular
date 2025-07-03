@@ -32,7 +32,7 @@ git merge nome-da-nova-branch
 # 4. Envie ao GitHub
 git push origin main
 
-# 5. Antes de rodar o Docker ou testar, defina o environment:
+# 5. ATENÇÃO: INICIE O SOFTWARE DOCKER. Antes de rodar o Docker ou testar, defina o environment:
 ### 5.1 para Frontend (Angular) Via terminal
 # Rodar com environment.ts (modo desenvolvimento)
 ng serve
@@ -40,7 +40,7 @@ ng serve
 # Rodar com environment.prod.ts (modo produção)
 ng serve --configuration=production
 
-# Para build em produção
+# Para build em produçãod
 ng build --configuration=production
 
 ### 5.2 para Backend
