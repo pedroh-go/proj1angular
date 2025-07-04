@@ -52,10 +52,12 @@ services:
       - KC_DB_PASSWORD=${KC_DB_PASSWORD}
       - KEYCLOAK_ADMIN=${KEYCLOAK_ADMIN}
       - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
-      - KC_HTTP_ENABLED=${KC_HTTP_ENABLED} # permite comunicação HTTP (sem TLS) mesmo com redirect HTTPS
-      - KC_PROXY=${KC_PROXY}      
-      - KC_HOSTNAME_STRICT=${KC_HOSTNAME_STRICT}     # Temporário, apenas durante DESENV: Isso permite que o Keycloak aceite qualquer hostname
-      - KC_HOSTNAME=${KC_HOSTNAME} # define o domínio público do Keycloak no Gitpod
+
+      # Desative quando for usar locamente e ative para usar no GITPOD
+      #- KC_HTTP_ENABLED=${KC_HTTP_ENABLED} # permite comunicação HTTP (sem TLS) mesmo com redirect HTTPS
+      #- KC_PROXY=${KC_PROXY}      
+      #- KC_HOSTNAME_STRICT=${KC_HOSTNAME_STRICT}     # Temporário, apenas durante DESENV: Isso permite que o Keycloak aceite qualquer hostname
+      #- KC_HOSTNAME=${KC_HOSTNAME} # define o domínio público do Keycloak no Gitpod
      
     ports:
       - "8081:8080"
