@@ -1,6 +1,12 @@
-//environment para o ambiente de desenvolvimento
 export const environment = {
   production: false,
-  //apiUrl: 'http://localhost:8080/api'
-  apiUrl: 'https://8080-pedrohgo-proj1angular-7xyo5c7jdnv.ws-us120.gitpod.io/api'
+
+  // Backend API
+  apiUrl: 'http://localhost:8080/api',
+
+  // Autenticação com Keycloak (ambiente local)
+  issuer: 'http://localhost:8081/realms/proj1angular',
+  clientId: 'proj1angular-app',
+  redirectUri: window.location.origin, //detecta automaticamente a origem atual da aplicação local ou não
+  ambiente: 'DESENVOLVIMENTO' //indica o ambiente
 };
