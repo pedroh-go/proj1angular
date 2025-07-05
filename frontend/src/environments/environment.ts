@@ -1,3 +1,5 @@
+console.log('🔧 Environment carregado: DESENVOLVIMENTO');
+
 export const environment = {
   production: false,
 
