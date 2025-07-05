@@ -43,6 +43,7 @@ Thumbs.db
 
 # Docker
 .env
+.env.prod
 
 # Spring Boot
 .application.properties
