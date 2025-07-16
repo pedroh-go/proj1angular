@@ -1,0 +1,13 @@
+<nav class="menu">
+  <a routerLink="/cadastro" routerLinkActive="active">Cadastro</a>
+  <a routerLink="/listar" routerLinkActive="active">Listar</a>
+
+  <span *ngIf="!isLoggedIn()">
+    <button (click)="login()">Login</button>
+  </span>
+
+  <span *ngIf="isLoggedIn()">
+    <strong>Bem-vindo, {{ getUserName() }}</strong>
+    <button (click)="logout()">Sair</button>
+  </span>
+</nav>
