@@ -1,40 +1,94 @@
-<!--<nav class="menu">
-  <a routerLink="/cadastro" routerLinkActive="active">Cadastro</a>
-  <a routerLink="/listar" routerLinkActive="active">Listar</a>
+<mat-toolbar color="primary" class="custom-toolbar modern-blue-theme">
+  <!-- Logo -->
+  <a routerLink="/" class="logo-link" matTooltip="Página inicial">
+    <span class="logo-text">I&TEC</span>
+  </a>
 
-  <span *ngIf="!isLoggedIn()">
-    <button (click)="login()">Login</button>
-  </span>
+  <span class="spacer"></span>
 
-  <span *ngIf="isLoggedIn()">
-    <strong>Bem-vindo, {{ getUserName() }}</strong>
-    <button (click)="logout()">Sair</button>
-  </span>
-</nav>-->
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav" *ngIf="!(isMobile$ | async)">
+    <a mat-button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <mat-icon>home</mat-icon>
+      Início
+    </a>
 
-  <!-- Menu Único -->
-  <header class="custom-menu">
-    <!--<div class="logo" routerLink="/">
-      <img src="assets/images/logo/logo-128px.png" 
-          srcset="assets/images/logo/logo-256px.png 2x, assets/images/logo/logo-512px.png 3x" alt="Meu Logo" class="logo">
-    </div>-->
-    <a routerLink="/" class="logo-placeholder">
-  <span>I&TEC</span> 
-</a>
-    <nav class="main-nav">
-      <ul class="nav-links">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a></li>
-        <li><a routerLink="/cadastro" routerLinkActive="active">Cadastro</a></li>
-        <li><a routerLink="/listar" routerLinkActive="active">Listar</a></li>
-        <li>
-          <span *ngIf="!isLoggedIn()">
-            <button (click)="login()">Login</button>
-          </span>
-          <span *ngIf="isLoggedIn()">
-            <strong>Bem-vindo, {{ getUserName() }}</strong>
-            <button (click)="logout()">Sair</button>
-          </span>
-        </li>
-      </ul>
-    </nav>
-  </header>
+    <a mat-button routerLink="/cadastro" routerLinkActive="active">
+      <mat-icon>app_registration</mat-icon>
+      Cadastro
+    </a>
+
+    <a mat-button routerLink="/listar" routerLinkActive="active">
+      <mat-icon>list_alt</mat-icon>
+      Listar
+    </a>
+
+    <ng-container *ngIf="isLoggedIn(); else loginButton">
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+        {{ getUserName() }}
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Sair
+        </button>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #loginButton>
+      <a mat-button routerLink="/login" routerLinkActive="active"> <!-- Alterado aqui -->
+        <mat-icon>login</mat-icon>
+        Login
+      </a>
+    </ng-template>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isMobile$ | async">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Mobile Side Navigation -->
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" position="end">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" (click)="sidenav.close()" routerLinkActive="active">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <span matListItemTitle>Início</span>
+      </a>
+
+      <a mat-list-item routerLink="/cadastro" (click)="sidenav.close()" routerLinkActive="active">
+        <mat-icon matListItemIcon>app_registration</mat-icon>
+        <span matListItemTitle>Cadastro</span>
+      </a>
+
+      <a mat-list-item routerLink="/listar" (click)="sidenav.close()" routerLinkActive="active">
+        <mat-icon matListItemIcon>list_alt</mat-icon>
+        <span matListItemTitle>Listar</span>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <ng-container *ngIf="isLoggedIn(); else mobileLoginButton">
+        <div mat-subheader>Minha Conta</div>
+        <mat-list-item>
+          <mat-icon matListItemIcon>account_circle</mat-icon>
+          <span matListItemTitle>{{ getUserName() }}</span>
+        </mat-list-item>
+        <button mat-list-item (click)="logout(); sidenav.close()">
+          <mat-icon matListItemIcon>logout</mat-icon>
+          <span matListItemTitle>Sair</span>
+        </button>
+      </ng-container>
+
+      <ng-template #mobileLoginButton>
+        <a mat-list-item routerLink="/login" routerLinkActive="active" (click)="sidenav.close()"> <!-- Alterado aqui -->
+          <mat-icon matListItemIcon>login</mat-icon>
+          <span matListItemTitle>Login</span>
+        </a>
+      </ng-template>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
