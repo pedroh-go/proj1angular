@@ -6,3 +6,15 @@ body {
 main.conteudo {
   padding: 2rem;
 }
+.content {
+  min-height: calc(100vh - 120px); /* Ajuste conforme necessário */
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.app-header, .app-footer {
+  padding: 1rem;
+  background: #333;
+  color: white;
+}

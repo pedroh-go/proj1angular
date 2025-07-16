@@ -8,5 +8,5 @@ export const appRoutes: Routes = [
   { path: 'cadastro/:id', component: CadastroPessoaComponent, canActivate: [authGuard] },
   { path: 'listar', component: ListarPessoasComponent, canActivate: [authGuard] },
   { path: 'login', loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent) },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' } //A rota vazia '') redireciona para 'login'
 ];

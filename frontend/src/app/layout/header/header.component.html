@@ -1,4 +1,4 @@
-<nav class="menu">
+<!--<nav class="menu">
   <a routerLink="/cadastro" routerLinkActive="active">Cadastro</a>
   <a routerLink="/listar" routerLinkActive="active">Listar</a>
 
@@ -10,4 +10,31 @@
     <strong>Bem-vindo, {{ getUserName() }}</strong>
     <button (click)="logout()">Sair</button>
   </span>
-</nav>
+</nav>-->
+
+  <!-- Menu Único -->
+  <header class="custom-menu">
+    <!--<div class="logo" routerLink="/">
+      <img src="assets/images/logo/logo-128px.png" 
+          srcset="assets/images/logo/logo-256px.png 2x, assets/images/logo/logo-512px.png 3x" alt="Meu Logo" class="logo">
+    </div>-->
+    <a routerLink="/" class="logo-placeholder">
+  <span>I&TEC</span> 
+</a>
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a></li>
+        <li><a routerLink="/cadastro" routerLinkActive="active">Cadastro</a></li>
+        <li><a routerLink="/listar" routerLinkActive="active">Listar</a></li>
+        <li>
+          <span *ngIf="!isLoggedIn()">
+            <button (click)="login()">Login</button>
+          </span>
+          <span *ngIf="isLoggedIn()">
+            <strong>Bem-vindo, {{ getUserName() }}</strong>
+            <button (click)="logout()">Sair</button>
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </header>
