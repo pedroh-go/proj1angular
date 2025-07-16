@@ -28,6 +28,7 @@ Thumbs.db
 
 # Docker
 .env
+.env.prod
 
 # Google Oauth
 client_secret_apps.googleusercontent.com.json
