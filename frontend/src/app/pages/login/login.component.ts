@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon'; // Importe o MatIconModule
+import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,13 @@ import { MatIconModule } from '@angular/material/icon'; // Importe o MatIconModu
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginWithKeycloak() {
-    window.location.href = 'http://localhost:8081/realms/proj1angular/protocol/openid-connect/auth?client_id=proj1angular-app&redirect_uri=http://localhost:4200&response_type=code&scope=openid';
+  constructor(private authService: AuthService) {}
+
+  loginWithKeycloak(): void {
+    this.authService.loginWithKeycloak();
   }
 
-  loginWithGoogle() {
-    window.location.href = 'http://localhost:8081/realms/proj1angular/protocol/openid-connect/auth?client_id=proj1angular-app&redirect_uri=http://localhost:4200&response_type=code&scope=openid&kc_idp_hint=google';
+  loginWithGoogle(): void {
+    this.authService.loginWithGoogle();
   }
 }
