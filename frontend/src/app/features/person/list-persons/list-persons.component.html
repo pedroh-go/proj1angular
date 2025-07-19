@@ -1,0 +1,13 @@
+<h2>Lista de Pessoas</h2>
+
+<ul *ngIf="persons.length > 0; else nenhumaPessoa">
+  <li *ngFor="let p of persons">
+    {{ p.name }} - {{ p.email }}
+    <button (click)="edit(p.id)">Editar</button>
+    <button (click)="delete(p)">Excluir</button>
+  </li>
+</ul>
+
+<ng-template #nenhumaPessoa>
+  <p>Nenhuma pessoa cadastrada ainda.</p>
+</ng-template>

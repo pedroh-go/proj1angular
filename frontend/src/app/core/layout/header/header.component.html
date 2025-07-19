@@ -8,17 +8,17 @@
 
   <!-- Desktop Navigation -->
   <nav class="desktop-nav" *ngIf="!(isMobile$ | async)">
-    <a mat-button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a mat-button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <mat-icon>home</mat-icon>
       Início
     </a>
 
-    <a mat-button routerLink="/cadastro" routerLinkActive="active">
+    <a mat-button routerLink="/create" routerLinkActive="active">
       <mat-icon>app_registration</mat-icon>
       Cadastro
     </a>
 
-    <a mat-button routerLink="/listar" routerLinkActive="active">
+    <a mat-button routerLink="/list" routerLinkActive="active">
       <mat-icon>list_alt</mat-icon>
       Listar
     </a>
@@ -37,7 +37,7 @@
     </ng-container>
 
     <ng-template #loginButton>
-      <a mat-button routerLink="/login" routerLinkActive="active"> <!-- Alterado aqui -->
+      <a mat-button routerLink="/login" routerLinkActive="active">
         <mat-icon>login</mat-icon>
         Entrar
       </a>
@@ -59,12 +59,12 @@
         <span matListItemTitle>Início</span>
       </a>
 
-      <a mat-list-item routerLink="/cadastro" (click)="sidenav.close()" routerLinkActive="active">
+      <a mat-list-item routerLink="/create" (click)="sidenav.close()" routerLinkActive="active">
         <mat-icon matListItemIcon>app_registration</mat-icon>
         <span matListItemTitle>Cadastro</span>
       </a>
 
-      <a mat-list-item routerLink="/listar" (click)="sidenav.close()" routerLinkActive="active">
+      <a mat-list-item routerLink="/list" (click)="sidenav.close()" routerLinkActive="active">
         <mat-icon matListItemIcon>list_alt</mat-icon>
         <span matListItemTitle>Listar</span>
       </a>
@@ -84,7 +84,7 @@
       </ng-container>
 
       <ng-template #mobileLoginButton>
-        <a mat-list-item routerLink="/login" routerLinkActive="active" (click)="sidenav.close()"> <!-- Alterado aqui -->
+        <a mat-list-item routerLink="/login" (click)="sidenav.close()" routerLinkActive="active">
           <mat-icon matListItemIcon>login</mat-icon>
           <span matListItemTitle>Login</span>
         </a>

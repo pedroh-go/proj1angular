@@ -1,4 +1,4 @@
-package com.phitec.backend.controller;
+package com.phitec.backend.person.controller;
 
 import java.util.List;
 
@@ -13,60 +13,60 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.phitec.backend.model.Pessoa;
-import com.phitec.backend.repository.PessoaRepository;
+import com.phitec.backend.person.entity.PersonEntity;
+import com.phitec.backend.person.repository.PersonRepository;
 
 @RestController
-@RequestMapping("/api/pessoas")
-public class PessoaController {
+@RequestMapping("/api/persons")
+public class PersonController {
 
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private PersonRepository personRepository;
 
     //Salvar
     @PostMapping
-    public ResponseEntity<Pessoa> salvar(@RequestBody Pessoa pessoa) {
+    public ResponseEntity<PersonEntity> save(@RequestBody PersonEntity person) {
 
         // Salva no banco
-        Pessoa pessoaSalva = pessoaRepository.save(pessoa);
+        PersonEntity personSave = personRepository.save(person);
 
-        return ResponseEntity.ok(pessoaSalva);
+        return ResponseEntity.ok(personSave);
     }
 
     //Listar
     @GetMapping
-    public List<Pessoa> listar() {
-        return pessoaRepository.findAll();
+    public List<PersonEntity> list() {
+        return personRepository.findAll();
     }
 
     /**
      * Buscar pessoa por ID (usado na edição)
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Pessoa> buscarPorId(@PathVariable Long id) {
-        return pessoaRepository.findById(id)
+    public ResponseEntity<PersonEntity> searchById(@PathVariable Long id) {
+        return personRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     //alterar/atualizar
     @PutMapping("/{id}")
-    public ResponseEntity<Pessoa>atualizar(@PathVariable Long id, @RequestBody Pessoa pessoaAtualizada){
-        return pessoaRepository.findById(id)
-        .map(pessoa ->{
-            pessoa.setNome(pessoaAtualizada.getNome());
-            pessoa.setEmail(pessoaAtualizada.getEmail());
-            Pessoa pessoaSalva = pessoaRepository.save(pessoa);
-            return ResponseEntity.ok(pessoaSalva);
+    public ResponseEntity<PersonEntity>update(@PathVariable Long id, @RequestBody PersonEntity personUpdated){
+        return personRepository.findById(id)
+        .map(person ->{
+            person.setName(personUpdated.getName());
+            person.setEmail(personUpdated.getEmail());
+            PersonEntity personSaved = personRepository.save(person);
+            return ResponseEntity.ok(personSaved);
 
         }).orElse(ResponseEntity.notFound().build());
     }
 
     //deletar um registro
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void>excluir(@PathVariable Long id){
-        if(pessoaRepository.existsById(id)){
-            pessoaRepository.deleteById(id);
+    public ResponseEntity<Void>delete(@PathVariable Long id){
+        if(personRepository.existsById(id)){
+            personRepository.deleteById(id);
             return ResponseEntity.noContent().build();//204
         }else{
             return ResponseEntity.notFound().build();//404

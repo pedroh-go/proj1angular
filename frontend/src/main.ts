@@ -10,6 +10,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
     provideRouter(appRoutes),
-    provideOAuthClient(), provideAnimationsAsync(), provideAnimationsAsync() 
+    provideOAuthClient(), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync() 
   ]
 });
