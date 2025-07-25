@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.Customizer;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -17,18 +18,31 @@ public class SecurityConfig {
     // 1. Configurações de segurança
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable()
-            .cors().and()
-            .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/api/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .exceptionHandling(ex -> ex
+        // http
+        //     .csrf().disable()
+        //     .cors().and()
+        //     .authorizeHttpRequests(authz -> authz
+        //         .requestMatchers("/api/**").permitAll()
+        //         .anyRequest().authenticated()
+        //     )
+        //     .exceptionHandling(ex -> ex
+        //         .authenticationEntryPoint((req, res, authExc) ->
+        //             res.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+        //     );
+        // return http.build();
+
+        return http
+        .csrf(csrf -> csrf.disable())
+        .cors(Customizer.withDefaults())
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/api/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .exceptionHandling(ex -> ex
                 .authenticationEntryPoint((req, res, authExc) ->
                     res.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-            );
-        return http.build();
+            )
+        .build();
     }
 
     // 2. Filtro global de CORS

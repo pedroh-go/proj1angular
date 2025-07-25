@@ -10,6 +10,7 @@ services:
     build: ./backend
     ports:
       - "${BACKEND_PORT}:8080"
+      - "5005:5005"  # porta de debug Java
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB}
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
