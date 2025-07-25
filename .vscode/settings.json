@@ -1,3 +1,25 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+  // Sua configuração existente
+  "java.compile.nullAnalysis.mode": "automatic",
+  
+  // Configurações novas recomendadas
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.debug.settings.hotCodeReplace": "auto",
+  "java.debug.settings.vmArgs": "-Dspring.profiles.active=dev",
+  "docker.composeFile": "docker-compose.yml",
+  "debug.javascript.autoAttachFilter": "smart",
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+  "docker.environment": {
+    "JAVA_TOOL_OPTIONS": "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
+    "SPRING_PROFILES_ACTIVE": "dev,debug"
+  },
+  "launch": {
+    "configurations": [],
+    "compounds": [
+      {
+        "name": "Full Stack Debug",
+        "configurations": ["Debug Backend", "Debug Frontend"]
+      }
+    ]
+  }
 }
