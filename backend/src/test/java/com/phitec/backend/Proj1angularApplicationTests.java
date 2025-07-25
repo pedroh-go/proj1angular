@@ -1,13 +1,12 @@
-package com.proj1angular.proj1angular;
+package com.phitec.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Proj1angularApplicationTests {
+public class Proj1angularApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+    }
 }

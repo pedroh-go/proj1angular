@@ -22,7 +22,11 @@ public class UserController {
 
     @GetMapping("/me")
     public ResponseEntity<UserEntity> getCurrentUser(@AuthenticationPrincipal OidcUser oidcUser) {
+                
         UserEntity user = userService.getOrCreateUserFromToken(oidcUser);
+
+        System.out.println("teste");
+
         return ResponseEntity.ok(user);
     }
 }
